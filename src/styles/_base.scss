@@ -12,6 +12,10 @@ body {
   display: flex;
 }
 
+.width-100-max {
+  max-width: 100%;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -29,6 +33,6 @@ body {
 }
 
 button:hover {
-  cursor: pointer;
+  cursor : pointer;
   opacity: 90%;
 }

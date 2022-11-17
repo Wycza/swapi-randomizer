@@ -1,0 +1,19 @@
+.body__main {
+  padding: 30px;
+}
+
+.container__cards {
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+}
+
+.btn__primary {
+  background-color: var(--color-green);
+  color           : var(--color-white);
+  max-width       : 100%;
+  width           : 200px;
+  padding         : 10px;
+  border-radius   : 6px;
+  border          : none;
+}

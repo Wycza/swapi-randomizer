@@ -1,0 +1,14 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-subtitle>{{properties['description']}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <ul *ngIf="properties">
+      <li *ngFor="let property of properties | keyvalue; trackBy: cardByTitle">
+        <span>{{formatKey(property.key)}}</span> - <span class="property__value">{{property.value}}</span>
+      </li>
+    </ul>
+    <p>Won battles: {{wonBattles}}</p>
+  </mat-card-content>
+</mat-card>

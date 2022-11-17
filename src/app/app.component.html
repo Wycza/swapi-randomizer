@@ -1,1 +1,19 @@
 <app-header></app-header>
+
+<div class="body__main d-flex flex-column align-items-center gap-2">
+  <ng-container *ngIf="firstResult && secondResult">
+    <div class="container__cards d-flex justify-content-center gap-3 width-100-max">
+      <app-card-details [title]="firstResult.name"
+                        [properties]="firstResult"
+                        [wonBattles]="wonBattlesResultFirst"></app-card-details>
+      <app-card-details [title]="secondResult.name"
+                        [properties]="secondResult"
+                        [wonBattles]="wonBattlesResultSecond"></app-card-details>
+    </div>
+    <ng-container *ngIf="battleWinnerName$ | async as name">
+      <p>Winner of this battle: <b>{{name}}</b></p>
+    </ng-container>
+    <button class="btn__primary"
+            (click)="fetchData()">Play again</button>
+  </ng-container>
+</div>
