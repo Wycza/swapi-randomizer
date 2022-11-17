@@ -12,6 +12,7 @@ import { PeopleState } from 'src/app/store/people/people.state';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 
@@ -30,7 +31,7 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
     MatCardModule,
     MatProgressSpinnerModule,
       developmentMode: !environment.production
-    })
+    FormsModule,
   ],
   providers: [
     {

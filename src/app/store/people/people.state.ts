@@ -74,9 +74,13 @@ export class PeopleState {
 
     return forkJoin([person1, person2]).pipe(
       tap((res: IPeopleModel[]) => {
-        const winnerId = res[0].mass > res[1].mass
-          ? action.id1
-          : action.id2;
+        let winnerId = -1
+
+        if (Number(res[0].mass) > Number(res[1].mass)) {
+          winnerId = action.id1;
+        } else if (Number(res[0].mass) < Number(res[1].mass)) {
+          winnerId = action.id2;
+        }
 
         ctx.patchState({
           ...state,

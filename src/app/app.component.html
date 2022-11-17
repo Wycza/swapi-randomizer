@@ -11,10 +11,24 @@
                         [properties]="secondResult"
                         [wonBattles]="wonBattlesResultSecond"></app-card-details>
     </div>
-    <ng-container *ngIf="battleWinnerName$ | async as name">
+
+    <ng-container *ngIf="battleWinnerName$ | async as name; else draw">
       <p>Winner of this battle: <b>{{name}}</b></p>
     </ng-container>
-    <button class="btn__primary"
-            (click)="fetchData()">Play again</button>
+    <ng-template #draw>
+      <p>Draw!</p>
+    </ng-template>
+
+    <div>
+      <label for="select-game">Play against:</label>
+      <select class="select__game"
+              id="select-game"
+              [(ngModel)]="selectedGame">
+        <option [ngValue]="SwapiType.People">People</option>
+        <option [ngValue]="SwapiType.Starships">Starships</option>
+      </select>
+    </div>
   </ng-container>
+  <button class="btn__primary"
+          (click)="fetchData()">Play again</button>
 </div>

@@ -17,6 +17,9 @@ export class AppComponent implements OnDestroy {
   public firstResult: IPeopleModel | null = null;
   public secondResult: IPeopleModel | null = null;
   public battleWinnerName$: Observable<string> = new Observable();
+  public selectedGame = SwapiType.Starships;
+
+  SwapiType = SwapiType;
 
   constructor(private readonly store: Store) {
     this.fetchData();
