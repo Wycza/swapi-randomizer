@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component'
-
+import { NgxsModule } from '@ngxs/store';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,9 @@ import { HeaderComponent } from './components/header/header.component'
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxsModule.forRoot([], {
+      developmentMode: !environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
