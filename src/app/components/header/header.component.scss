@@ -1,0 +1,10 @@
+header {
+  height          : var(--navbar-height);
+  background-color: var(--color-red);
+  color           : var(--color-white);
+  font-size       : var(--font-medium);
+}
+
+.header__content {
+  padding: 0 40px;
+}
