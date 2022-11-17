@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { IPeopleModel } from "../models/people.model";
 import { HttpClient } from '@angular/common/http';
-import { IStarshipModel } from "../models/starship.model";
+import { IPeopleResponseModel } from "./responseModels/peopleResponse.model";
+import { IStarshipResponseModel } from "./responseModels/starshipResponse.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,11 @@ export class SwapiService {
 
   constructor(private readonly httpClient: HttpClient) { }
 
-  getPeople(id: number): Observable<IPeopleModel> {
-    return this.httpClient.get<IPeopleModel>(`${this.swapiBaseUrl}/people/${id}`);
+  getPeople(id: number): Observable<IPeopleResponseModel> {
+    return this.httpClient.get<IPeopleResponseModel>(`${this.swapiBaseUrl}/people/${id}`);
   }
 
-  getStarships(id: number): Observable<IStarshipModel> {
-    return this.httpClient.get<IStarshipModel>(`${this.swapiBaseUrl}/starships/${id}`);
+  getStarships(id: number): Observable<IStarshipResponseModel> {
+    return this.httpClient.get<IStarshipResponseModel>(`${this.swapiBaseUrl}/starships/${id}`);
   }
 }
