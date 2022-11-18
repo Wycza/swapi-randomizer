@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule, Type } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,11 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { GameSelectorComponent } from './components/game-selector/game-selector.component';
 import { WinnerOutputComponent } from './components/winner-output/winner-output.component';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+
+const devModules: (any[] | Type<any> | ModuleWithProviders<{}>)[] = [
+  NgxsReduxDevtoolsPluginModule.forRoot(),
+];
 
 @NgModule({
   declarations: [
@@ -36,6 +41,9 @@ import { WinnerOutputComponent } from './components/winner-output/winner-output.
     MatProgressSpinnerModule,
       developmentMode: !environment.production
     FormsModule,
+    environment.production
+      ? []
+      : devModules,
   ],
   providers: [
     {
