@@ -57,4 +57,8 @@ export class AppComponent implements OnDestroy {
 
     return [num1, num2];
   }
+
+  onGameSelected(type: SwapiType): void {
+    this.selectedGame = type;
+  }
 }

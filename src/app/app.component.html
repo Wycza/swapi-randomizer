@@ -19,16 +19,10 @@
       <p>Draw!</p>
     </ng-template>
 
-    <div>
-      <label for="select-game">Play against:</label>
-      <select class="select__game"
-              id="select-game"
-              [(ngModel)]="selectedGame">
-        <option [ngValue]="SwapiType.People">People</option>
-        <option [ngValue]="SwapiType.Starships">Starships</option>
-      </select>
-    </div>
+    <app-game-selector [(selectedGameValue)]="selectedGame"></app-game-selector>
   </ng-container>
   <button class="btn__primary"
-          (click)="fetchData()">Play again</button>
+          (click)="fetchData()">
+    Play again
+  </button>
 </div>

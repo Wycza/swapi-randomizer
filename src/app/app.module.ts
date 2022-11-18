@@ -15,6 +15,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { GameSelectorComponent } from './components/game-selector/game-selector.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
     HeaderComponent,
     CardDetailsComponent,
     SpinnerComponent,
+    GameSelectorComponent,
   ],
   imports: [
     BrowserModule,
