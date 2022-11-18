@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { GameSelectorComponent } from './components/game-selector/game-selector.component';
+import { WinnerOutputComponent } from './components/winner-output/winner-output.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { GameSelectorComponent } from './components/game-selector/game-selector.
     CardDetailsComponent,
     SpinnerComponent,
     GameSelectorComponent,
+    WinnerOutputComponent,
   ],
   imports: [
     BrowserModule,

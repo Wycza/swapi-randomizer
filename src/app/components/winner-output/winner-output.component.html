@@ -1,0 +1,6 @@
+<ng-container *ngIf="name; else draw">
+  <p>Winner of this battle: <b>{{name}}</b></p>
+</ng-container>
+<ng-template #draw>
+  <p>Draw!</p>
+</ng-template>

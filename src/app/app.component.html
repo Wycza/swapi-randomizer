@@ -11,14 +11,7 @@
                         [properties]="secondResult"
                         [wonBattles]="wonBattlesResultSecond"></app-card-details>
     </div>
-
-    <ng-container *ngIf="battleWinnerName$ | async as name; else draw">
-      <p>Winner of this battle: <b>{{name}}</b></p>
-    </ng-container>
-    <ng-template #draw>
-      <p>Draw!</p>
-    </ng-template>
-
+    <app-winner-output [name]="battleWinnerName$ | async"></app-winner-output>
     <app-game-selector [(selectedGameValue)]="selectedGame"></app-game-selector>
   </ng-container>
   <button class="btn__primary"
