@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, takeUntil } from 'rxjs';
 import { IPeopleModel } from './models/people.model';
@@ -10,7 +10,7 @@ import { GameState, IResourceModel } from './store/game/game.state';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   private destroy: Subject<void> = new Subject<void>();
   public firstResult: IResourceModel<IPeopleModel | IStarshipModel> | null = null;
   public secondResult: IResourceModel<IPeopleModel | IStarshipModel> | null = null;

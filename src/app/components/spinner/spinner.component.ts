@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { debounceTime, Subject, takeUntil } from 'rxjs';
 import { SpinnerService } from 'src/app/services/spinner.service';
 
@@ -8,7 +8,7 @@ import { SpinnerService } from 'src/app/services/spinner.service';
   styleUrls: ['./spinner.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SpinnerComponent implements OnInit {
+export class SpinnerComponent implements OnInit, OnDestroy {
   private destroy: Subject<void> = new Subject<void>();
   public showSpinner = false;
 
