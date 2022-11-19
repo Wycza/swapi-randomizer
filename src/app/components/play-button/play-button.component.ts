@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject, takeUntil } from 'rxjs';
 import { SwapiType } from 'src/app/enums/swapiType.enum';
@@ -11,11 +11,13 @@ import { GameState } from 'src/app/store/game/game.state';
   styleUrls: ['./play-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlayButtonComponent implements OnDestroy {
+export class PlayButtonComponent implements OnDestroy, OnInit {
   private destroy: Subject<void> = new Subject<void>();
   private selectedGameMode: SwapiType = SwapiType.People;
 
-  constructor(private readonly store: Store) {
+  constructor(private readonly store: Store) { }
+
+  ngOnInit(): void {
     this.onSelectedGameChange();
   }
 
