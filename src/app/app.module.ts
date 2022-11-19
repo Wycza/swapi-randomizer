@@ -12,7 +12,6 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
-import { StarshipsState } from './store/starships/starships.state';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { GameSelectorComponent } from './components/game-selector/game-selector.component';
@@ -41,7 +40,7 @@ const devModules: (any[] | Type<any> | ModuleWithProviders<{}>)[] = [
     HttpClientModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    NgxsModule.forRoot([GameState, StarshipsState], {
+    NgxsModule.forRoot([GameState], {
       developmentMode: !environment.production
     }),
     FormsModule,

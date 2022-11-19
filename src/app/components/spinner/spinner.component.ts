@@ -18,7 +18,7 @@ export class SpinnerComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.spinnerService.showSpinner$
+    this.spinnerService.spinnerValue()
       .pipe(
         takeUntil(this.destroy),
         debounceTime(300)

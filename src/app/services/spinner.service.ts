@@ -6,9 +6,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class SpinnerService {
   private _showSpinner: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  showSpinner$: Observable<boolean> = this._showSpinner.asObservable();
+  private showSpinner$: Observable<boolean> = this._showSpinner.asObservable();
 
-  setLoading(loading: boolean) {
+  setLoading(loading: boolean): void {
     this._showSpinner.next(loading);
+  }
+
+  spinnerValue(): Observable<boolean> {
+    return this.showSpinner$;
   }
 }
