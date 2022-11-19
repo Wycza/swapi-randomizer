@@ -1,4 +1,4 @@
 <ng-container *ngIf="battleResult$ | async as result">
-  <p *ngIf="result.name">Winner of this battle: <b>{{result.name}}</b></p>
-  <p *ngIf="result.isDraw">Draw!</p>
+  <p class="output__name" *ngIf="result.name">Winner of this battle: <b>{{result.name}}</b></p>
+  <p class="output__draw" *ngIf="result.isDraw">Draw!</p>
 </ng-container>
