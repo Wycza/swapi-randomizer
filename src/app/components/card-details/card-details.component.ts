@@ -12,10 +12,6 @@ export class CardDetailsComponent {
   @Input() wonBattles = 0;
   @Input() properties: IDictionary<any> = {};
 
-  formatKey(key: string) {
-    return (key[0].toLocaleUpperCase() + key.slice(1)).split('_').join(' ');
-  }
-
   cardByTitle(): string {
     return this.title;
   }

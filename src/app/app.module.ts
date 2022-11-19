@@ -18,6 +18,7 @@ import { GameSelectorComponent } from './components/game-selector/game-selector.
 import { WinnerOutputComponent } from './components/winner-output/winner-output.component';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { PlayButtonComponent } from './components/play-button/play-button.component';
+import { HumanPropertyPipe } from './pipes/human-property.pipe';
 
 const devModules: (any[] | Type<any> | ModuleWithProviders<{}>)[] = [
   NgxsReduxDevtoolsPluginModule.forRoot(),
@@ -32,6 +33,7 @@ const devModules: (any[] | Type<any> | ModuleWithProviders<{}>)[] = [
     GameSelectorComponent,
     WinnerOutputComponent,
     PlayButtonComponent,
+    HumanPropertyPipe,
   ],
   imports: [
     BrowserModule,
