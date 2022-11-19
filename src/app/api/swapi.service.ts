@@ -21,6 +21,7 @@ export class SwapiService {
           return {
             ...res.result.properties,
             description: res.result.description,
+            mass: Number(res.result.properties.mass.toString().replace(/,/g, '.')),
             id: res.result.uid,
           }
         })

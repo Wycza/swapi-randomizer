@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
-import { PeopleState } from './store/people/people.state';
+import { GameState } from './store/game/game.state';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -15,7 +15,7 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
-        NgxsModule.forRoot([PeopleState], {
+        NgxsModule.forRoot([GameState], {
           developmentMode: true,
         })
       ],

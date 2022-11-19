@@ -2,9 +2,9 @@
   <label for="select-game">Play against:</label>
   <select class="select__game"
           id="select-game"
-          [(ngModel)]="selectedGameValue"
-          (ngModelChange)="selectedGameValueChange.emit(selectedGameValue)">
-    <option [ngValue]="SwapiType.People" selected>People</option>
+          [ngModel]="selectedGameValue | async"
+          (ngModelChange)="onGameChange($event)">
+    <option [ngValue]="SwapiType.People">People</option>
     <option [ngValue]="SwapiType.Starships">Starships</option>
   </select>
 </div>

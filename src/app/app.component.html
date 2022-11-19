@@ -4,18 +4,16 @@
 <div class="body__main d-flex flex-column align-items-center gap-2">
   <ng-container *ngIf="firstResult && secondResult">
     <div class="container__cards d-flex justify-content-center gap-3 width-100-max">
-      <app-card-details [title]="firstResult.name"
-                        [properties]="firstResult"
-                        [wonBattles]="wonBattlesResultFirst"></app-card-details>
-      <app-card-details [title]="secondResult.name"
-                        [properties]="secondResult"
-                        [wonBattles]="wonBattlesResultSecond"></app-card-details>
+      <app-card-details [title]="firstResult.details.name"
+                        [properties]="firstResult.details"
+                        [wonBattles]="firstResult.wonBattlesNumber"></app-card-details>
+      <app-card-details [title]="secondResult.details.name"
+                        [properties]="secondResult.details"
+                        [wonBattles]="secondResult.wonBattlesNumber"></app-card-details>
     </div>
-    <app-winner-output [name]="battleWinnerName$ | async"></app-winner-output>
-    <app-game-selector [(selectedGameValue)]="selectedGame"></app-game-selector>
+    <app-winner-output></app-winner-output>
+    <app-game-selector></app-game-selector>
   </ng-container>
-  <button class="btn__primary"
-          (click)="fetchData()">
-    Play again
-  </button>
+
+  <app-play-button></app-play-button>
 </div>

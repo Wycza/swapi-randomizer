@@ -7,7 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component'
 import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
-import { PeopleState } from 'src/app/store/people/people.state';
+import { GameState } from 'src/app/store/game/game.state';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -18,6 +18,7 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { GameSelectorComponent } from './components/game-selector/game-selector.component';
 import { WinnerOutputComponent } from './components/winner-output/winner-output.component';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { PlayButtonComponent } from './components/play-button/play-button.component';
 
 const devModules: (any[] | Type<any> | ModuleWithProviders<{}>)[] = [
   NgxsReduxDevtoolsPluginModule.forRoot(),
@@ -31,6 +32,7 @@ const devModules: (any[] | Type<any> | ModuleWithProviders<{}>)[] = [
     SpinnerComponent,
     GameSelectorComponent,
     WinnerOutputComponent,
+    PlayButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ const devModules: (any[] | Type<any> | ModuleWithProviders<{}>)[] = [
     HttpClientModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    NgxsModule.forRoot([PeopleState, StarshipsState], {
+    NgxsModule.forRoot([GameState, StarshipsState], {
       developmentMode: !environment.production
     }),
     FormsModule,
