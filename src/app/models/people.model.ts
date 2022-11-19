@@ -12,4 +12,5 @@ export interface IPeopleModel {
   homeworld: string;
   url: string
   description: string;
+  id: string;
 }

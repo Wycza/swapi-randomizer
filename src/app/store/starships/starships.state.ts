@@ -3,26 +3,26 @@ import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { catchError, delay, EMPTY, forkJoin, Observable, of, retryWhen, switchMap, tap, throwError } from "rxjs";
 import { SwapiService } from "src/app/api/swapi.service";
 import { HttpErrorResponseExtended } from "src/app/models/httpError.model";
-import { IPeopleModel } from "src/app/models/people.model";
+import { IStarshipModel } from "src/app/models/starship.model";
 import { generateTwoDifferentNumbers } from "src/app/utils/numberGenerator";
-import { FetchPeopleData } from "./people.action";
+import { FetchStarshipsData } from "./starships.action";
 
 export interface IStateDataModel {
   [key: string]: {
-    details: IPeopleModel,
+    details: IStarshipModel,
     wonBattlesNumber: number;
   }
 }
 
-export interface IPeopleStateModel {
+export interface IStarshipsStateModel {
   firstResultId: string;
   secondResultId: string;
   currentWinnerId: string;
   data: IStateDataModel
 }
 
-@State<IPeopleStateModel>({
-  name: 'peopleState',
+@State<IStarshipsStateModel>({
+  name: 'starshipsState',
   defaults: {
     firstResultId: '',
     secondResultId: '',
@@ -31,41 +31,41 @@ export interface IPeopleStateModel {
   }
 })
 @Injectable()
-export class PeopleState {
+export class StarshipsState {
   bannedIds: number[] = [];
 
   constructor(private readonly swapiService: SwapiService) { }
 
   @Selector()
-  static getWonBattlesNumber(state: IPeopleStateModel): (personId: string) => number {
-    return (personId: string): number => {
-      return state.data[personId]?.wonBattlesNumber || 0;
+  static getWonBattlesNumber(state: IStarshipsStateModel): (starshipId: string) => number {
+    return (starshipId: string): number => {
+      return state.data[starshipId]?.wonBattlesNumber || 0;
     }
   }
 
   @Selector()
-  static getPersonDetails(state: IPeopleStateModel): (personId: string) => IPeopleModel {
-    return (personId: string): IPeopleModel => {
-      return state.data[personId]?.details || {};
+  static getStarshipDetails(state: IStarshipsStateModel): (starshipId: string) => IStarshipModel {
+    return (starshipId: string): IStarshipModel => {
+      return state.data[starshipId]?.details || {};
     }
   }
 
   @Selector()
-  static getWinnerName(state: IPeopleStateModel): string {
+  static getWinnerName(state: IStarshipsStateModel): string {
     return state.currentWinnerId
       ? state.data[state.currentWinnerId].details.name
       : '';
   }
 
-  @Action(FetchPeopleData)
-  fetchPeopleData(ctx: StateContext<IPeopleStateModel>, action: FetchPeopleData) {
+  @Action(FetchStarshipsData)
+  fetchStarshipsData(ctx: StateContext<IStarshipsStateModel>, action: FetchStarshipsData) {
     const state = ctx.getState();
 
     let retry = 0;
     let [firstId, secondId] = generateTwoDifferentNumbers(1, 15, this.bannedIds);
 
-    let request1: Observable<IPeopleModel> = this.createRequestCheckCache(state, firstId, 1);
-    let request2: Observable<IPeopleModel> = this.createRequestCheckCache(state, secondId, 2);
+    let request1: Observable<IStarshipModel> = this.createRequestCheckCache(state, firstId, 1);
+    let request2: Observable<IStarshipModel> = this.createRequestCheckCache(state, secondId, 2);
 
     return of(EMPTY)
       .pipe(
@@ -97,7 +97,8 @@ export class PeopleState {
             delay(200)
           )
         ),
-        tap((res: IPeopleModel[]) => {
+
+        tap((res: IStarshipModel[]) => {
           const winnerId = this.determineWinnerId(res);
 
           ctx.patchState({
@@ -127,25 +128,25 @@ export class PeopleState {
       );
   }
 
-  private determineWinnerId(res: IPeopleModel[]): number {
+  private determineWinnerId(res: IStarshipModel[]): number {
     let winnerId = -1
 
-    if (Number(res[0].mass) > Number(res[1].mass)) {
+    if (Number(res[0].length) > Number(res[1].length)) {
       winnerId = Number(res[0].id);
-    } else if (Number(res[0].mass) < Number(res[1].mass)) {
+    } else if (Number(res[0].length) < Number(res[1].length)) {
       winnerId = Number(res[1].id);
     }
 
     return winnerId;
   }
 
-  private createRequestCheckCache(state: IPeopleStateModel, id: number, requestNumber: number): Observable<IPeopleModel> {
-    let request: Observable<IPeopleModel>;
+  private createRequestCheckCache(state: IStarshipsStateModel, id: number, requestNumber: number): Observable<IStarshipModel> {
+    let request: Observable<IStarshipModel>;
 
     if (state.data[`${id}`]) {
       request = of(state.data[`${id}`].details);
     } else {
-      request = this.swapiService.getPeopleById(id)
+      request = this.swapiService.getStarshipById(id)
         .pipe(catchError(err => throwError(() => {
           return {
             ...err,

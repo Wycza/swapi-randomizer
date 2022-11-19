@@ -1,6 +1,5 @@
 import { ModuleWithProviders, NgModule, Type } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +12,7 @@ import { CardDetailsComponent } from './components/card-details/card-details.com
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
+import { StarshipsState } from './store/starships/starships.state';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { GameSelectorComponent } from './components/game-selector/game-selector.component';
@@ -39,7 +39,9 @@ const devModules: (any[] | Type<any> | ModuleWithProviders<{}>)[] = [
     HttpClientModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    NgxsModule.forRoot([PeopleState, StarshipsState], {
       developmentMode: !environment.production
+    }),
     FormsModule,
     environment.production
       ? []
