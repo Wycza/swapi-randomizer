@@ -3,7 +3,7 @@ export interface IStarshipModel {
   starship_class: string;
   manufacturer: string;
   cost_in_credits: number;
-  length: number;
+  length: number | string;
   crew: string;
   passengers: string;
   max_atmosphering_speed: string;

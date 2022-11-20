@@ -7,6 +7,6 @@ export interface IStarshipResponseModel extends IBaseSwapiResponseModel {
     _id: string;
     uid: string;
     __v: number;
-    properties: IStarshipModel,
+    properties: IStarshipModel;
   }
 }

@@ -11,7 +11,6 @@ import { IStarshipModel } from "../models/starship.model";
 })
 export class SwapiService {
   private readonly swapiBaseUrl = 'https://www.swapi.tech/api';
-
   constructor(private readonly httpClient: HttpClient) { }
 
   getPeopleById(id: number): Observable<IPeopleModel> {

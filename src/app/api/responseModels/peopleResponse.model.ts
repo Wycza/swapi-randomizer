@@ -7,6 +7,6 @@ export interface IPeopleResponseModel extends IBaseSwapiResponseModel {
     _id: string;
     uid: string;
     __v: number;
-    properties: IPeopleModel,
+    properties: IPeopleModel;
   }
 }
