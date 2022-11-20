@@ -60,22 +60,6 @@ export class GameState {
   constructor(private readonly swapiService: SwapiService) { }
 
   @Selector()
-  static getWonBattlesNumber(state: IGameStateModel): (resourceId: string) => number {
-    return (resourceId: string): number => {
-      const gameMode = state.lastGameMode;
-
-      return state[gameMode][resourceId].wonBattlesNumber || 0;
-    }
-  }
-
-  @Selector()
-  static getResourceDetails(state: IGameStateModel): (resourceId: string, type: SwapiType) => IResourceModel<IPeopleModel | IStarshipModel> {
-    return (resourceId: string, type: SwapiType): IResourceModel<IPeopleModel | IStarshipModel> => {
-      return state[type][resourceId] || {};
-    }
-  }
-
-  @Selector()
   static getBattleResult(state: IGameStateModel): IBattleResultModel {
     const gameMode = state.lastGameMode;
     const winnerId = state.currentWinnerId;
@@ -99,7 +83,7 @@ export class GameState {
   static getFirstResult(state: IGameStateModel): IResourceModel<IPeopleModel | IStarshipModel> | null {
     const gameMode = state.lastGameMode;
     const resourceId = state.firstResultId;
-
+    
     return resourceId
       ? state[gameMode][resourceId]
       : null;
